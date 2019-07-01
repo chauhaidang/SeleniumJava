@@ -21,7 +21,4 @@ public class MethodCalling {
         // TODO Auto-generated method stub
         System.out.println("test go 3");
     }
-
-
-
 }
