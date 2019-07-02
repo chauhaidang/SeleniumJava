@@ -1,3 +1,5 @@
+package Training;
+
 public class Methods {
 
   public static void main(String[] args){

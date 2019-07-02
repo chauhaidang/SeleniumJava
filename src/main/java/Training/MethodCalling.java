@@ -1,3 +1,5 @@
+package Training;
+
 public class MethodCalling {
 
     public static void main(String[] args) {
@@ -7,18 +9,18 @@ public class MethodCalling {
     }
 
     public void go1() {
-        System.out.println("test go 1");
+        System.out.println("Training.test go 1");
         go2();
     }
 
     public void go2() {
         // TODO Auto-generated method stub
-        System.out.println("test go 2");
+        System.out.println("Training.test go 2");
         go3();
     }
 
     public void go3() {
         // TODO Auto-generated method stub
-        System.out.println("test go 3");
+        System.out.println("Training.test go 3");
     }
 }

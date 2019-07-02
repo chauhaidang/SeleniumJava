@@ -1,3 +1,5 @@
+package Training;
+
 public class StaticAndNonStatic {
 
   /**
@@ -5,6 +7,10 @@ public class StaticAndNonStatic {
    * non-static can call non-static/ static
    * static can not call non-static
    */
+
+  public static int q = 200;
+
+
 
   public void hey1(){
     System.out.println("hey1");

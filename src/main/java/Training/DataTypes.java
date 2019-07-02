@@ -1,3 +1,5 @@
+package Training;
+
 public class DataTypes {
     public static void main(String[] arg){
         int i = 1234; //int --> interger. That mean prototype of int is integer
