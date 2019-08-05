@@ -14,7 +14,7 @@ public class JsonTest {
         String dataType = "[{ \"Event\": \"ODR\", \"Time\": \"11/22/1996 - 03/20/1997\", \"Status\": \"DEVELOPMENT\", \"dang\": { \"sub\": [ {\"child\":\"dangchild\"} ]}}]";
         JsonElement jsonE = jsonParser(dataType);
         String kq = null;
-        kq = getValueByKey(jsonE, "child", kq);
+        kq = getValueByKey(jsonE, "dang", kq);
         System.out.println("KET QUA IS: "+ kq);
     }
 
@@ -31,7 +31,7 @@ public class JsonTest {
                     kq = getValueByKey(e.getValue(),key, kq);
                 }
                 else{
-                    kq = e.getValue().getAsString();
+                    kq = e.getValue().isJsonObject() || e.getValue().isJsonArray() ? e.getValue().toString(): e.getValue().getAsString() ;
                 }
             }
         }
