@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class JsonTest {
     public static void main(String[] args){
-        String dataType = "[{ \"Event\": \"ODR\", \"Time\": \"11/22/1996 - 03/20/1997\", \"Status\": \"DEVELOPMENT\", \"dang\": { \"sub\": [ {\"child\":\"dangchild\"} ]}}, { \"Event\": \"ODR\", \"Time\": \"11/22/1996 - 03/20/1997\", \"Status\": \"DEVELOPMENT\", \"dang\": { \"sub\": [ {\"child\":\"dangchild\"} ]}}]";
+        String dataType = "[{ \"Event\": \"ODR\", \"Time\": \"11/22/1996 - 03/20/1997\", \"Status\": \"DEVELOPMENT\", \"dang\": { \"sub\": [ {\"child\":\"dangchild\"} ]}}]";
         JsonElement jsonE = jsonParser(dataType);
         String kq = null;
         kq = getValueByKey(jsonE, "child", kq);
