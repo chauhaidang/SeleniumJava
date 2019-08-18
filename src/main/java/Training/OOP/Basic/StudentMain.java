@@ -1,4 +1,4 @@
-package Training.OOP;
+package Training.OOP.Basic;
 
 public class StudentMain {
     public static void main(String[] args){

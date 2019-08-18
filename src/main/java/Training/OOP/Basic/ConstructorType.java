@@ -1,4 +1,4 @@
-package Training.OOP;
+package Training.OOP.Basic;
 
 public class ConstructorType {
     int x;
