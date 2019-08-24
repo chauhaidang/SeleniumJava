@@ -1,7 +1,5 @@
 package Training.Operators;
 
-import static Training.JavaDoesNotSupportPassByValue4Static.a;
-
 public class Operator1 {
     public static void main(String[] args){
         /**
