@@ -54,7 +54,6 @@ public class ArrayClass {
         }
 
         //Enhanced for loop
-
         for(int[] rowValue : d){
             for(int colValue : rowValue){
                 System.out.println(colValue);
