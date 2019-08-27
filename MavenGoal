@@ -1,0 +1,30 @@
+mvn clean => clean all binary and jar file in target
+
+mvn compile => compile source file (.java) in main folder to .class file in /target/classes folder
+
+mvn test-compile => compile test source file (.java) in src/test folder to .class file in /target/test-classed folder
+
+mvn test => run test class
+
+mvn install => compile all source all test and run all test and package it into jar file, and can be use as a dependency in another project
+
+mvn package => package all source and test to jar file in /target folder
+
+mvn integration-test => same with test
+
+mvn verify => validate the project by many check to qualify the project
+
+mvn deploy => will copy the final package to remote repository to share with another environment
+
+
+
+**HIERARCHY OF MAVEN BUILD LIFECYCLE
+
+validate
+    compile
+        test
+            package
+                integration-test
+                    verify
+                        install
+                            deploy
