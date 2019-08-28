@@ -18,7 +18,7 @@ public class TestUtil extends BaseTest {
         fileName = d.toString().replace(":", "_").replace(" ", "_") + ".jpg";
 
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshot, new File(System.getProperty("user.dir") + "/test-output/html/" + fileName));
+        FileUtils.copyFile(screenshot, new File(System.getProperty("user.dir") + "/target/surefire-reports/html/" + fileName));
     }
 
     /**

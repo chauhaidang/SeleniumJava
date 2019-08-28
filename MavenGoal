@@ -4,7 +4,7 @@ mvn compile => compile source file (.java) in main folder to .class file in /tar
 
 mvn test-compile => compile test source file (.java) in src/test folder to .class file in /target/test-classed folder
 
-mvn test => run test class
+mvn test => run @test method but not sequence ( will need testng.xml to configure order)
 
 mvn install => compile all source all test and run all test and package it into jar file, and can be use as a dependency in another project
 
