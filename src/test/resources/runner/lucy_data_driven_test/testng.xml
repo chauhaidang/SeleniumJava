@@ -5,22 +5,9 @@
         <listener class-name="lucy_data_driven_test.listeners.CustomListeners"></listener>
         <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
     </listeners>
-
     <test name="Bank Manager Login Test">
         <classes>
-            <class name="lucy_data_driven_test.testcases.BankManagerLoginTest"/>
+            <class name="lucy_data_driven_test.testcases.BankManagerLoginTest"></class>
         </classes>
-    </test> <!-- Test -->
-
-    <test name="Add Customer Test">
-        <classes>
-            <class name="lucy_data_driven_test.testcases.AddCustomerTest"/>
-        </classes>
-    </test> <!-- Test -->
-
-    <test name="Open Account Test">
-        <classes>
-            <class name="lucy_data_driven_test.testcases.OpenAccountTest"/>
-        </classes>
-    </test> <!-- Test -->
+    </test>
 </suite> <!-- Suite -->

@@ -1,4 +1,6 @@
 target/
+test-output/
+src/test/resources/logs/execution.log
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup

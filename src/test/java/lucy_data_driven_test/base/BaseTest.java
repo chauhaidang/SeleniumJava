@@ -63,7 +63,7 @@ public class BaseTest {
 
             //Load config file
             try {
-                fis = new FileInputStream(Const.TEST_RESOURCE_PATH + "properties/lucy_data_driven_test/Config.properties");
+                fis = new FileInputStream(Const.TEST_RESOURCE_PATH + "/properties/lucy_data_driven_test/Config.properties");
                 Config.load(fis);
                 log.info("Config file loaded!");
             } catch (Exception e) {
@@ -72,7 +72,7 @@ public class BaseTest {
 
             //Load object file
             try {
-                fis = new FileInputStream(Const.TEST_RESOURCE_PATH + "properties/lucy_data_driven_test/OR.properties");
+                fis = new FileInputStream(Const.TEST_RESOURCE_PATH + "/properties/lucy_data_driven_test/OR.properties");
                 OR.load(fis);
                 log.info("Object Repository file loaded!");
             } catch (Exception e) {
@@ -99,13 +99,13 @@ public class BaseTest {
             log.info("set implicit wait completed!");
 
             //Connect to db
-            try {
-                DbManager.setMysqlDbConnection();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                DbManager.setMysqlDbConnection();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            } catch (ClassNotFoundException e) {
+//                e.printStackTrace();
+//            }
 
             //Set explicit wait if needed
             wait = new WebDriverWait(driver, Integer.parseInt(Config.getProperty("explicit.wait")));
@@ -198,12 +198,9 @@ public class BaseTest {
             log.info("Finding the Element : " + locatorKey);
             return true;
         } catch (Throwable t) {
-
-            log.info("Error while finding an element : " + locatorKey + " exception message is : " + t.getMessage());
+            log.error("Error while finding an element : " + locatorKey + " exception message is : " + t.getMessage());
             return false;
-
         }
-
     }
 
     @AfterSuite
