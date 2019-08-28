@@ -14,19 +14,19 @@ public class TestUtil extends BaseTest {
     public static String fileName;
 
     public static void captureScreenshot() throws IOException {
-
         Date d = new Date();
         fileName = d.toString().replace(":", "_").replace(" ", "_") + ".jpg";
 
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(screenshot, new File(System.getProperty("user.dir") + "/test-output/html/" + fileName));
-
     }
 
-
+    /**
+     * Get data provider from excel
+     * @param sheetName
+     * @return Object[][]
+     */
     public static Object[][] getData(String sheetName) {
-
-
         int rowNum = excel.getRowCount(sheetName);
         int colNum = excel.getColumnCount(sheetName);
 
@@ -38,7 +38,6 @@ public class TestUtil extends BaseTest {
                 data[rows - 2][cols] = excel.getCellData(sheetName, cols, rows);
 
             }
-
         }
         return data;
     }

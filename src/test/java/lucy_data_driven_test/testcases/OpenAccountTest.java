@@ -8,20 +8,19 @@ import org.testng.annotations.Test;
 import javax.mail.MessagingException;
 import java.io.IOException;
 
-public class AddCustomerTest extends BaseTest {
-
+public class OpenAccountTest extends BaseTest {
     @Test(dataProvider="getData")
-    public void addCustomer(String firstname, String lastname, String postcode) throws IOException, MessagingException {
-        click("addCustBtn_CSS");
-        type("firstName_CSS", firstname);
-        type("lastName_CSS", lastname);
-        type("postCode_CSS", postcode);
-        click("addCustomer_CSS");
+    public void openAccount(String customer, String currency) throws IOException, MessagingException {
+        click("openAccount_CSS");
+        select("customer_CSS", customer);
+        select("currency_CSS", currency);
+        click("process_CSS");
         driver.switchTo().alert().accept();
     }
 
     @DataProvider()
     public static Object[][] getData() {
-        return TestUtil.getData("AddCustomerTest");
+        return TestUtil.getData("OpenAccountTest");
     }
 }
+
