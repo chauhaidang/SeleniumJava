@@ -1,17 +1,12 @@
 package lucy_pom_test.pages;
 
+import lucy_pom_test.base.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class CustomerDetail {
-
-    WebDriver driver;
-
-    public CustomerDetail(WebDriver _driver){
-        driver = _driver;
-    }
+public class CustomerDetail extends Page {
 
     public String getWelcomeStatus(){
         return driver.findElement(By.xpath("//strong[contains(normalize-space(),'Welcome')]")).getText();

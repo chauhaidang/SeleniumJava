@@ -1,17 +1,12 @@
 package lucy_pom_test.pages;
 
+import lucy_pom_test.base.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class CustomerLogin {
-
-    WebDriver driver;
-
-    public CustomerLogin(WebDriver _driver){
-        driver = _driver;
-    }
+public class CustomerLogin extends Page {
 
     public String getUserNameTitle(){
         return driver.findElement(By.cssSelector(".form-group > label")).getText();

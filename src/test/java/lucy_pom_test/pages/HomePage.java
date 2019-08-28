@@ -1,15 +1,10 @@
 package lucy_pom_test.pages;
 
+import lucy_pom_test.base.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
-
-   WebDriver driver;
-
-   public HomePage(WebDriver _driver){
-       driver = _driver;
-   }
+public class HomePage extends Page {
 
    public void goToHome(){
        driver.findElement(By.cssSelector(".btn.home")).click();

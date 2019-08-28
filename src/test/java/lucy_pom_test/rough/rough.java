@@ -2,6 +2,7 @@ package lucy_pom_test.rough;
 
 import core.helpers.driverhelper.DriverManager;
 import core.helpers.driverhelper.DriverName;
+import lucy_pom_test.base.Page;
 import lucy_pom_test.pages.CustomerDetail;
 import lucy_pom_test.pages.CustomerLogin;
 import lucy_pom_test.pages.HomePage;
@@ -14,31 +15,26 @@ import java.util.concurrent.TimeUnit;
 public class rough {
 
     public static void main(String[] args) throws Exception {
-        DriverManager.setupDriver(DriverName.CHROME);
-        WebDriver driver = new ChromeDriver();
-        driver.get("http://www.way2automation.com/angularjs-protractor/banking/#/login");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage();
         homePage.goToHome();
         Assert.assertEquals(homePage.getTitle(),"XYZ Bank");
         homePage.goToCustomerLogin();
 
-        CustomerLogin customerLogin = new CustomerLogin(driver);
+        CustomerLogin customerLogin = new CustomerLogin();
         Assert.assertEquals(customerLogin.getUserNameTitle(), "Your Name :");
         Assert.assertEquals(customerLogin.getDefaultFromUserNameDropdown(), "---Your Name---");
         customerLogin.selectUserName("Harry Potter");
         customerLogin.clickLogin();
 
-        CustomerDetail customerDetail = new CustomerDetail(driver);
+        CustomerDetail customerDetail = new CustomerDetail();
         Assert.assertTrue(customerDetail.getWelcomeStatus().contains("Harry Potter"));
         customerDetail.selectAccountNumber("1004");
         Assert.assertEquals(customerDetail.getAccountNumberInfo(), "1004");
 
         Thread.sleep(3000);
 
-        driver.close();
+        Page.driver.close();
     }
 
 }
