@@ -1,8 +1,6 @@
 package lucy_data_driven_test.utilities;
 public class TestConfig{
 
-
-	
 	public static String server="smtp.gmail.com";
 	public static String from = "corporate@way2automation.com";
 	public static String password = "Selenium@123";
@@ -27,13 +25,5 @@ public class TestConfig{
 	public static String mysqluserName = "root";
 	public static String mysqlpassword = "123456";
 	public static String mysqlurl = "jdbc:mysql://localhost:3306/dangchau";
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
