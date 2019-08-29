@@ -29,6 +29,9 @@ public class OptionsMapper {
         if (option.equals(HEADLESS) && (driverName.equalsIgnoreCase(CHROME)  || driverName.equalsIgnoreCase(FIREFOX))) {
             arg = "--headless";
         }
+        else{
+            arg = option;
+        }
         return arg;
     }
 }

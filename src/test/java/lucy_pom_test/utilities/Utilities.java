@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
-public class TestUtil extends Page {
+public class Utilities extends Page {
 
     public static String fileName;
 
