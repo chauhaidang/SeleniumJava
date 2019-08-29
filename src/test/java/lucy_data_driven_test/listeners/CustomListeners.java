@@ -27,7 +27,7 @@ public class CustomListeners implements ITestListener {
 	}
 
 	public void onTestFailure(ITestResult arg0) {
-
+		//Add tag for reportng to understand html script
 		System.setProperty("org.uncommons.reportng.escape-output", "false");
 		try {
 			TestUtil.captureScreenshot();

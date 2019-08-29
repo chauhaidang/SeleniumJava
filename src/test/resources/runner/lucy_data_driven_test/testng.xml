@@ -3,6 +3,7 @@
 <suite name="DataDriven Testing">
     <listeners>
         <listener class-name="lucy_data_driven_test.listeners.CustomListeners"></listener>
+<!--        one more listener from ReportNG to generate more html report-->
         <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
     </listeners>
 
