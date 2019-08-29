@@ -22,12 +22,14 @@ public class CustomerDetail extends Page {
         return driver.findElement(By.xpath("//div[contains(text(),'Account Number')]/strong[1]")).getText();
     }
 
-    public void clickTransactionsButton(){
+    public CustomerDetail_Transactions clickTransactionsButton(){
         driver.findElement(By.cssSelector("button[ng-click='transactions()']")).click();
+        return new CustomerDetail_Transactions();
     }
 
-    public void clickDepositButton(){
+    public CustomerDetail_Deposit clickDepositButton(){
         driver.findElement(By.cssSelector("button[ng-click='deposit()']")).click();
+        return new CustomerDetail_Deposit();
     }
 
     public void clickWithdrawlButton(){

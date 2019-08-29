@@ -24,7 +24,8 @@ public class CustomerLogin extends Page {
         return select.getFirstSelectedOption().getText();
     }
 
-    public void clickLogin(){
+    public CustomerDetail clickLogin(){
         driver.findElement(By.cssSelector("button[type=submit]")).click();
+        return new CustomerDetail();
     }
 }

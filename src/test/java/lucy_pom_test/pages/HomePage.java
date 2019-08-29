@@ -14,11 +14,13 @@ public class HomePage extends Page {
         return driver.findElement(By.cssSelector(".mainHeading")).getText();
    }
 
-   public void goToCustomerLogin(){
-        driver.findElement(By.cssSelector("button[ng-click='customer()']")).click();
+   public CustomerLogin goToCustomerLogin(){
+       driver.findElement(By.cssSelector("button[ng-click='customer()']")).click();
+       return new CustomerLogin();
    }
 
-   public void goToBankManagerLogin(){
+   public BankManagerDetail goToBankManagerLogin(){
        driver.findElement(By.cssSelector("button[ng-click='manager()']")).click();
+       return new BankManagerDetail();
    }
 }

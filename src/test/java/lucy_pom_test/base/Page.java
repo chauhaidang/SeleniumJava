@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class Page {
 
     public static WebDriver driver;
+    //if your applications have their top menu bar, you should declare the page object of it here, cuz it always display at every page
 
     public Page() {
         //Make sure every sub class does not re-initialize this driver instance
