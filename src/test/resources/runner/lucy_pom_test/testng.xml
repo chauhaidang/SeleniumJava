@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="DataDriven Testing">
+<suite name="POM Testing">
     <listeners>
-        <listener class-name="lucy_data_driven_test.listeners.CustomListeners"></listener>
+        <listener class-name="lucy_pom_test.listeners.POM_Listener"></listener>
         <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
     </listeners>
 
-    <test name="Bank Manager Login Test">
+    <test name="Test1">
         <classes>
-            <class name="lucy_data_driven_test.testcases.BankManagerLoginTest"></class>
+            <class name="lucy_pom_test.testcases.test1"></class>
         </classes>
     </test>
-
-    <test name="Add Customer Test">
-        <classes>
-            <class name="lucy_data_driven_test.testcases.AddCustomerTest"></class>
-        </classes>
-    </test>
-
-    <test name="Open Account Test">
-        <classes>
-            <class name="lucy_data_driven_test.testcases.OpenAccountTest"></class>
-        </classes>
-    </test>
-
 </suite> <!-- Suite -->

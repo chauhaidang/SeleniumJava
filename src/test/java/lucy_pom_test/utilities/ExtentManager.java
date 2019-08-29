@@ -13,7 +13,9 @@ public class ExtentManager {
     public static ExtentReports getInstance(){
 
         if(extent==null){
-            extent = new ExtentReports(System.getProperty("user.dir")+"/target/surefire-report/html/extent.html", true, DisplayOrder.OLDEST_FIRST);
+            //set new extent report
+            extent = new ExtentReports(System.getProperty("user.dir")+"/target/surefire-reports/html/extent.html", true, DisplayOrder.OLDEST_FIRST);
+            //Load config
             extent.loadConfig(new File(System.getProperty("user.dir")+ Const.TEST_RESOURCE_PATH + "/extentconfig/lucy_pom_test/ReportsConfig.xml"));
         }
         return extent;

@@ -6,7 +6,7 @@ import org.testng.Assert;
 
 public class workflow1 {
 
-    public static void main(String[] args) throws Exception {
+    public void main(String[] args) throws Exception {
 
         HomePage homePage = new HomePage();
         homePage.goToHome();

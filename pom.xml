@@ -22,7 +22,7 @@
                 <configuration>
                     <testFailureIgnore> false </testFailureIgnore>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/runner/lucy_data_driven_test/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/runner/lucy_pom_test/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -77,7 +77,7 @@
             <version>1.1.4</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.inject/guice need for report html-->
+        <!-- https://mvnrepository.com/artifact/com.google.inject/guice google api need for time report html-->
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>

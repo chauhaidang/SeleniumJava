@@ -44,10 +44,14 @@ public class Page {
     public static Properties OR = new Properties();
     public static Properties Config = new Properties();
     public static FileInputStream fis;
+
     public static Logger log = LogManager.getLogger(BaseTest.class.getName());
     public static ExcelReader excel = new ExcelReader(Const.TEST_RESOURCE_PATH + "/excel/lucy_pom_test/testdata.xlsx");
+
     public ExtentReports report = ExtentManager.getInstance();
+    //This will listen and manage all log report for your testcases for the listener
     public static ExtentTest test;
+
     //public static String browser;
     public static WebDriverWait wait;
     public static WebElement dropdown;
