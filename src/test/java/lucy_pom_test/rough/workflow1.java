@@ -8,12 +8,12 @@ public class workflow1 {
 
     public void main(String[] args) throws Exception {
 
-        HomePage homePage = new HomePage();
-        homePage.goToHome();
-        Assert.assertEquals(homePage.getTitle(),"XYZ Bank");
+        Home home = new Home();
+        home.goToHome();
+        Assert.assertEquals(home.getTitle(),"XYZ Bank");
 
         //Goto customer login
-        CustomerLogin customerLogin = homePage.goToCustomerLogin();
+        CustomerLogin customerLogin = home.goToCustomerLogin();
         Assert.assertEquals(customerLogin.getUserNameTitle(), "Your Name :");
         Assert.assertEquals(customerLogin.getDefaultFromUserNameDropdown(), "---Your Name---");
         customerLogin.selectUserName("Harry Potter");

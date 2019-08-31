@@ -14,7 +14,7 @@ public class TransactionTable extends Page {
     private List<WebElement> rows_table;
 
     public TransactionTable() {
-        table = driver.findElement(By.cssSelector(".table.table-bordered.table-striped"));
+        table = driver.findElement(By.cssSelector(OR.getProperty("CustomerDetail.Transactions.tableTransactions.css")));
     }
 
     public WebElement getTableHeader() {

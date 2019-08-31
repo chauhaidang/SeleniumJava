@@ -55,6 +55,6 @@ public class CustomerDetail_Transactions extends Page {
     }
 
     public void clickBack(){
-        driver.findElement(By.cssSelector("button[ng-click='back()']")).click();
+        click("CustomerDetail.Transactions.btnBack.css");
     }
 }

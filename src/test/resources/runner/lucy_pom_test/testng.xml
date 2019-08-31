@@ -6,9 +6,9 @@
         <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
     </listeners>
 
-    <test name="Test1">
+    <test name="Login Test">
         <classes>
-            <class name="lucy_pom_test.testcases.test1"></class>
+            <class name="lucy_pom_test.testcases.LoginTest"></class>
         </classes>
     </test>
 </suite> <!-- Suite -->

@@ -20,7 +20,7 @@ public class POM_Listener extends Page implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
         //define log for test case
-        test.log(LogStatus.PASS, iTestResult.getName().toUpperCase() + "PASSED");
+        test.log(LogStatus.PASS, iTestResult.getName().toUpperCase() + " PASSED");
         report.endTest(test);
         report.flush();
     }
@@ -42,7 +42,7 @@ public class POM_Listener extends Page implements ITestListener {
         Reporter.log("<a target=\"_blank\" href="+Utilities.fileName+"><img src="+Utilities.fileName+" height=200 width=200></a>");
 
         //ExtentReport
-        test.log(LogStatus.FAIL, iTestResult.getName().toUpperCase() + "FAILED with exception "+ iTestResult.getThrowable());
+        test.log(LogStatus.FAIL, iTestResult.getName().toUpperCase() + " FAILED with exception: "+ iTestResult.getThrowable());
         test.log(LogStatus.FAIL, test.addScreenCapture(Utilities.fileName));
         report.endTest(test); //stop listen to test
         report.flush(); // release holding the report

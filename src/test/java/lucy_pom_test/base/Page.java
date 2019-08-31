@@ -1,42 +1,40 @@
 package lucy_pom_test.base;
 
-        import com.google.inject.internal.cglib.proxy.$NoOp;
-        import com.relevantcodes.extentreports.ExtentReports;
-        import com.relevantcodes.extentreports.ExtentTest;
-        import com.relevantcodes.extentreports.LogStatus;
-        import core.helpers.Const;
-        import core.helpers.driverhelper.DriverManager;
-        import core.helpers.driverhelper.DriverName;
-        import core.helpers.driverhelper.DriverOpts;
-        import core.helpers.driverhelper.OptionsMapper;
-        import lucy_data_driven_test.base.BaseTest;
-        import lucy_data_driven_test.utilities.ExcelReader;
-        import lucy_data_driven_test.utilities.MonitoringMail;
-        import lucy_data_driven_test.utilities.TestUtil;
-        import lucy_pom_test.utilities.ExtentManager;
-        import lucy_pom_test.utilities.Utilities;
-        import org.apache.logging.log4j.LogManager;
-        import org.apache.logging.log4j.Logger;
-        import org.openqa.selenium.By;
-        import org.openqa.selenium.WebDriver;
-        import org.openqa.selenium.WebElement;
-        import org.openqa.selenium.chrome.ChromeDriver;
-        import org.openqa.selenium.chrome.ChromeOptions;
-        import org.openqa.selenium.firefox.FirefoxDriver;
-        import org.openqa.selenium.support.ui.Select;
-        import org.openqa.selenium.support.ui.WebDriverWait;
-        import org.testng.Assert;
-        import org.testng.Reporter;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import core.helpers.Const;
+import core.helpers.driverhelper.DriverManager;
+import core.helpers.driverhelper.DriverName;
+import core.helpers.driverhelper.OptionsMapper;
+import lucy_data_driven_test.base.BaseTest;
+import lucy_data_driven_test.utilities.ExcelReader;
+import lucy_pom_test.utilities.ExtentManager;
+import lucy_pom_test.utilities.Utilities;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.Reporter;
 
-        import javax.mail.MessagingException;
-        import javax.mail.internet.AddressException;
-        import java.io.FileInputStream;
-        import java.io.IOException;
-        import java.util.HashMap;
-        import java.util.List;
-        import java.util.Map;
-        import java.util.Properties;
-        import java.util.concurrent.TimeUnit;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import static core.helpers.Const.*;
 
 public class Page {
 
@@ -60,7 +58,7 @@ public class Page {
 
     public Page() {
         //Make sure every sub class does not re-initialize this driver instance
-        if(driver == null){
+        if (driver == null) {
 
             //Load config file
             try {
@@ -113,7 +111,7 @@ public class Page {
         }
     }
 
-    public static void quit(){
+    public static void quit() {
         driver.quit();
     }
 
@@ -121,17 +119,17 @@ public class Page {
     public static void click(String locatorKey) {
 
 
-        if (locatorKey.endsWith("_XPATH")) {
+        if (locatorKey.endsWith(XPATH)) {
 
             driver.findElement(By.xpath(OR.getProperty(locatorKey))).click();
 
-        } else if (locatorKey.endsWith("_CSS")) {
+        } else if (locatorKey.endsWith(CSS)) {
 
             driver.findElement(By.cssSelector(OR.getProperty(locatorKey))).click();
 
-        } else if (locatorKey.endsWith(OR.getProperty("_ID"))) {
+        } else if (locatorKey.endsWith(ID)) {
 
-            driver.findElement(By.id(locatorKey)).click();
+            driver.findElement(By.id(OR.getProperty(locatorKey))).click();
 
         }
 
@@ -141,17 +139,17 @@ public class Page {
 
     public static void type(String locatorKey, String value) throws IOException, AddressException, MessagingException {
 
-        if (locatorKey.endsWith("_XPATH")) {
+        if (locatorKey.endsWith(XPATH)) {
 
             driver.findElement(By.xpath(OR.getProperty(locatorKey))).sendKeys(value);
 
-        } else if (locatorKey.endsWith("_CSS")) {
+        } else if (locatorKey.endsWith(CSS)) {
 
             driver.findElement(By.cssSelector(OR.getProperty(locatorKey))).sendKeys(value);
 
-        } else if (locatorKey.endsWith(OR.getProperty("_ID"))) {
+        } else if (locatorKey.endsWith(ID)) {
 
-            driver.findElement(By.id(locatorKey)).sendKeys(value);
+            driver.findElement(By.id(OR.getProperty(locatorKey))).sendKeys(value);
 
         }
 
@@ -162,17 +160,17 @@ public class Page {
     public static void select(String locatorKey, String value) throws IOException, AddressException, MessagingException {
 
 
-        if (locatorKey.endsWith("_XPATH")) {
+        if (locatorKey.endsWith(XPATH)) {
 
             dropdown = driver.findElement(By.xpath(OR.getProperty(locatorKey)));
 
-        } else if (locatorKey.endsWith("_CSS")) {
+        } else if (locatorKey.endsWith(CSS)) {
 
             dropdown = driver.findElement(By.cssSelector(OR.getProperty(locatorKey)));
 
-        } else if (locatorKey.endsWith(OR.getProperty("_ID"))) {
+        } else if (locatorKey.endsWith(ID)) {
 
-            dropdown = driver.findElement(By.id(locatorKey));
+            dropdown = driver.findElement(By.id(OR.getProperty(locatorKey)));
 
         }
         Select select = new Select(dropdown);
@@ -184,17 +182,17 @@ public class Page {
 
     public static boolean isElementPresent(String locatorKey) {
         try {
-            if (locatorKey.endsWith("_XPATH")) {
+            if (locatorKey.endsWith(XPATH)) {
 
                 driver.findElement(By.xpath(OR.getProperty(locatorKey)));
 
-            } else if (locatorKey.endsWith("_CSS")) {
+            } else if (locatorKey.endsWith(CSS)) {
 
                 driver.findElement(By.cssSelector(OR.getProperty(locatorKey)));
 
-            } else if (locatorKey.endsWith(OR.getProperty("_ID"))) {
+            } else if (locatorKey.endsWith(ID)) {
 
-                driver.findElement(By.id(locatorKey));
+                driver.findElement(By.id(OR.getProperty(locatorKey)));
 
             }
             log.info("Finding the Element : " + locatorKey);
@@ -205,16 +203,54 @@ public class Page {
         }
     }
 
-    public static void verifyEquals(String expected, String actual) throws IOException {
-        try{
-            Assert.assertEquals(actual, expected);
+    public static String getText(String locatorKey) {
+
+        String elementValue = null;
+
+        if (locatorKey.endsWith(XPATH)) {
+
+            elementValue = driver.findElement(By.xpath(OR.getProperty(locatorKey))).getText();
+
+        } else if (locatorKey.endsWith(CSS)) {
+
+            elementValue = driver.findElement(By.cssSelector(OR.getProperty(locatorKey))).getText();
+
+        } else if (locatorKey.endsWith(ID)) {
+
+            elementValue = driver.findElement(By.id(OR.getProperty(locatorKey))).getText();
+
         }
-        catch (Throwable t){
+
+        log.info("Get display text of an Element : " + locatorKey);
+        return elementValue;
+    }
+
+    public static Select getDropdownSelector(String locatorKey){
+        if (locatorKey.endsWith(XPATH)) {
+
+            dropdown = driver.findElement(By.xpath(OR.getProperty(locatorKey)));
+
+        } else if (locatorKey.endsWith(CSS)) {
+
+            dropdown = driver.findElement(By.cssSelector(OR.getProperty(locatorKey)));
+
+        } else if (locatorKey.endsWith(ID)) {
+
+            dropdown = driver.findElement(By.id(OR.getProperty(locatorKey)));
+
+        }
+        return new Select(dropdown);
+    }
+
+    public static void verifyEquals(String expected, String actual) throws IOException {
+        try {
+            Assert.assertEquals(actual, expected);
+        } catch (Throwable t) {
             Utilities.captureScreenshot();
 
             //ReportNG
-            Reporter.log("<br>" +"Verification failed: "+ t.getMessage() + "<br>");
-            Reporter.log("<a target=\"_blank\" href="+ Utilities.fileName+"><img src="+Utilities.fileName+" height=200 width=200></a>");
+            Reporter.log("<br>" + "Verification failed: " + t.getMessage() + "<br>");
+            Reporter.log("<a target=\"_blank\" href=" + Utilities.fileName + "><img src=" + Utilities.fileName + " height=200 width=200></a>");
             Reporter.log("<br>");
             Reporter.log("<br>");
 

@@ -6,33 +6,34 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import javax.mail.MessagingException;
+import java.io.IOException;
+
 public class CustomerDetail extends Page {
 
     public String getWelcomeStatus(){
-        return driver.findElement(By.xpath("//strong[contains(normalize-space(),'Welcome')]")).getText();
+        return getText("CustomerDetail.welcomeStatus.xpath");
     }
 
-    public void selectAccountNumber(String accountNumber){
-        WebElement selectElement = driver.findElement(By.cssSelector("#accountSelect"));
-        Select select = new Select(selectElement);
-        select.selectByVisibleText(accountNumber);
+    public void selectAccountNumber(String accountNumber) throws IOException, MessagingException {
+        select("CustomerDetail.accountDropdown.css", accountNumber);
     }
 
     public String getAccountNumberInfo(){
-        return driver.findElement(By.xpath("//div[contains(text(),'Account Number')]/strong[1]")).getText();
+       return getText("CustomerDetail.accountNumberInfo.xpath");
     }
 
     public CustomerDetail_Transactions clickTransactionsButton(){
-        driver.findElement(By.cssSelector("button[ng-click='transactions()']")).click();
+        click("CustomerDetail.btnTransaction.css");
         return new CustomerDetail_Transactions();
     }
 
     public CustomerDetail_Deposit clickDepositButton(){
-        driver.findElement(By.cssSelector("button[ng-click='deposit()']")).click();
+        click("CustomerDetail.btnDeposit.css");
         return new CustomerDetail_Deposit();
     }
 
     public void clickWithdrawlButton(){
-        driver.findElement(By.cssSelector("button[ng-click='withdrawl()']")).click();
+        click("CustomerDetail.btnWithdrawl.css");
     }
 }

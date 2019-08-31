@@ -4,23 +4,23 @@ import lucy_pom_test.base.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage extends Page {
+public class Home extends Page {
 
    public void goToHome(){
-       driver.findElement(By.cssSelector(".btn.home")).click();
+       click("Home.btnHome.css");
    }
 
    public String getTitle(){
-        return driver.findElement(By.cssSelector(".mainHeading")).getText();
+        return getText("Home.pageHeading.css");
    }
 
    public CustomerLogin goToCustomerLogin(){
-       driver.findElement(By.cssSelector("button[ng-click='customer()']")).click();
+       click("Home.btnCustomerLogin.css");
        return new CustomerLogin();
    }
 
    public BankManagerDetail goToBankManagerLogin(){
-       driver.findElement(By.cssSelector("button[ng-click='manager()']")).click();
+       click("Home.btnBankManagerLogin.css");
        return new BankManagerDetail();
    }
 }
