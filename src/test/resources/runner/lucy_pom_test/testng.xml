@@ -11,4 +11,9 @@
             <class name="lucy_pom_test.testcases.LoginTest"></class>
         </classes>
     </test>
+    <test name="Customer Detail Test">
+        <classes>
+            <class name="lucy_pom_test.testcases.CustomerDetailTest"></class>
+        </classes>
+    </test>
 </suite> <!-- Suite -->

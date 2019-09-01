@@ -4,6 +4,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import core.helpers.Const;
+import core.helpers.Log;
 import core.helpers.driverhelper.DriverManager;
 import core.helpers.driverhelper.DriverName;
 import core.helpers.driverhelper.OptionsMapper;
@@ -19,6 +20,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -134,7 +136,7 @@ public class Page {
         }
 
         log.info("Clicking on an Element : " + locatorKey);
-
+        test.log(LogStatus.INFO, "Clicking on an Element: " + locatorKey);
     }
 
     public static void type(String locatorKey, String value) throws IOException, AddressException, MessagingException {
@@ -154,7 +156,7 @@ public class Page {
         }
 
         log.info("Typing in an Element : " + locatorKey + " entered the value as : " + value);
-
+        test.log(LogStatus.INFO, "Typing in an Element : " + locatorKey + " entered the value as : " + value);
     }
 
     public static void select(String locatorKey, String value) throws IOException, AddressException, MessagingException {
@@ -176,26 +178,29 @@ public class Page {
         Select select = new Select(dropdown);
         select.selectByVisibleText(value);
 
-        log.info("Typing in an Element : " + locatorKey + " entered the value as : " + value);
+        log.info("Select in an Element : " + locatorKey + " with value : " + value);
+        test.log(LogStatus.INFO, "Select in an Element : " + locatorKey + " with value : " + value);
 
     }
 
     public static boolean isElementPresent(String locatorKey) {
+
         try {
             if (locatorKey.endsWith(XPATH)) {
 
-                driver.findElement(By.xpath(OR.getProperty(locatorKey)));
+                wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(OR.getProperty(locatorKey)))));
 
             } else if (locatorKey.endsWith(CSS)) {
 
-                driver.findElement(By.cssSelector(OR.getProperty(locatorKey)));
+                wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(OR.getProperty(locatorKey)))));
 
             } else if (locatorKey.endsWith(ID)) {
 
-                driver.findElement(By.id(OR.getProperty(locatorKey)));
+                wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(OR.getProperty(locatorKey)))));
 
             }
-            log.info("Finding the Element : " + locatorKey);
+            log.info("Found the Element : " + locatorKey);
+            test.log(LogStatus.INFO, "Fount the Element: "+ locatorKey);
             return true;
         } catch (Throwable t) {
             log.error("Error while finding an element : " + locatorKey + " exception message is : " + t.getMessage());
@@ -222,6 +227,7 @@ public class Page {
         }
 
         log.info("Get display text of an Element : " + locatorKey);
+        test.log(LogStatus.INFO, "Get display text of an Element : " + locatorKey);
         return elementValue;
     }
 
@@ -244,6 +250,7 @@ public class Page {
 
     public static void verifyEquals(String expected, String actual) throws IOException {
         try {
+            test.log(LogStatus.INFO, "Verifying....");
             Assert.assertEquals(actual, expected);
         } catch (Throwable t) {
             Utilities.captureScreenshot();
