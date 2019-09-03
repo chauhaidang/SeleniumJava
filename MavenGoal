@@ -28,3 +28,6 @@ validate
                     verify
                         install
                             deploy
+
+
+                            test commit CI/CD
