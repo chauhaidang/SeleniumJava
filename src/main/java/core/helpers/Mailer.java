@@ -1,4 +1,6 @@
-package lucy_pom_test.utilities;
+package core.helpers;
+
+import com.sun.istack.internal.NotNull;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -7,10 +9,10 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Properties;
 
+public class Mailer {
 
-public class MonitoringMail {
-
-    public void sendMail(String mailServer, String from, String[] to, String subject, String messageBody, String attachmentPath, String attachmentName) throws MessagingException, AddressException {
+    public void sendMail(String mailServer, String from, @NotNull String[] to, String subject, String messageBody,
+                         String attachmentPath, String attachmentName) throws MessagingException, AddressException {
         boolean debug = false;
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");
@@ -32,7 +34,6 @@ public class MonitoringMail {
         session.setDebug(debug);
 
         try {
-
 
             Transport bus = session.getTransport("smtp");
             bus.connect();
@@ -77,8 +78,8 @@ public class MonitoringMail {
     private class SMTPAuthenticator extends Authenticator {
 
         public PasswordAuthentication getPasswordAuthentication() {
-            String username = TestConfig.from;
-            String password = TestConfig.password;
+            String username = Const.from;
+            String password = Const.password;
             return new PasswordAuthentication(username, password);
         }
     }

@@ -1,10 +1,9 @@
-package lucy_pom_test.utilities;
+package core.helpers;
 
-import lucy_data_driven_test.base.BaseTest;
-import lucy_pom_test.base.Page;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.DataProvider;
 
 import java.io.File;
@@ -13,25 +12,24 @@ import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.Hashtable;
 
-public class Utilities extends Page {
+public class Utilities {
 
     public static String fileName;
 
-    public static void captureScreenshot() throws IOException {
+    public static void captureScreenshot(WebDriver driver, String screenShotPath) throws IOException {
         Date d = new Date();
         fileName = d.toString().replace(":", "_").replace(" ", "_") + ".jpg";
 
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshot, new File(System.getProperty("user.dir") + "/target/surefire-reports/html/" + fileName));
+        FileUtils.copyFile(screenshot, new File(System.getProperty("user.dir") + screenShotPath + fileName));
     }
 
     /**
-     * Get data provider from excel
+     * Get data as hash table from excel
      * @param
      * @return Object[][]
      */
-    @DataProvider(name="dp")
-    public Object[][] getData(Method m) {
+    public Object[][] getData(Method m, ExcelReader excel) {
 
         String sheetName = m.getName();
         int rows = excel.getRowCount(sheetName);
@@ -57,11 +55,9 @@ public class Utilities extends Page {
     }
 
 
-    public static boolean isTestRunnable(String testName, ExcelReader excel){
+    public static boolean isTestRunnable(String sheetName ,String testName, ExcelReader excel){
 
-        String sheetName="test_suite";
         int rows = excel.getRowCount(sheetName);
-
 
         for(int rNum=2; rNum<=rows; rNum++){
 
