@@ -1,7 +1,5 @@
 package core.helpers;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -11,7 +9,7 @@ import java.util.Properties;
 
 public class Mailer {
 
-    public void sendMail(String mailServer, String from, @NotNull String[] to, String subject, String messageBody,
+    public void sendMail(String mailServer, String from, String[] to, String subject, String messageBody,
                          String attachmentPath, String attachmentName) throws MessagingException, AddressException {
         boolean debug = false;
         Properties props = new Properties();

@@ -16,7 +16,7 @@ public class Utilities {
 
     public static String fileName;
 
-    public static void captureScreenshot(WebDriver driver, String screenShotPath) throws IOException {
+    public static void captureScreenshotSupport(WebDriver driver, String screenShotPath) throws IOException {
         Date d = new Date();
         fileName = d.toString().replace(":", "_").replace(" ", "_") + ".jpg";
 
@@ -29,7 +29,7 @@ public class Utilities {
      * @param
      * @return Object[][]
      */
-    public Object[][] getData(Method m, ExcelReader excel) {
+    public static Object[][] getDataSupport(Method m, ExcelReader excel) {
 
         String sheetName = m.getName();
         int rows = excel.getRowCount(sheetName);
