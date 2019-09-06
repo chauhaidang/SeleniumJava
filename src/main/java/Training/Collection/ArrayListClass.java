@@ -1,5 +1,6 @@
 package Training.Collection;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ArrayListClass {
 
@@ -45,6 +46,18 @@ public class ArrayListClass {
         System.out.println("DATA "+ list4);
         for(Object o : list4){
             System.out.println(o.toString());
+        }
+
+        //Using Iterator Interface
+        ArrayList list5 = new ArrayList();
+        list5.add("TOTO1");
+        list5.add("AC");
+        list5.add("TOTO1");
+        System.out.println("Iterator with array list.........");
+        Iterator iterator = list5.iterator(); //Iterator will iterate the list without need to know how many index it have
+        //Best practice is to use while loop
+        while(iterator.hasNext()){
+            System.out.println(iterator.next()); // next() return the next element
         }
     }
 
