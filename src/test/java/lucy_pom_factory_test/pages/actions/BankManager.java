@@ -29,4 +29,8 @@ public class BankManager extends Page {
     public void goToCustomerInquiry(){
         bankManagerObject.btnCustomersInquiry.click();
     }
+
+    public int findTabCount() {
+        return bankManagerObject.tabNavigators.size();
+    }
 }

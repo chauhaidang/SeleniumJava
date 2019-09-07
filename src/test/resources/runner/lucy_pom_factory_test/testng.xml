@@ -3,6 +3,7 @@
 <suite name="POM FACTORY Testing">
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+        <listener class-name="lucy_pom_factory_test.collector.TestListenerAdapter"></listener>
     </listeners>
 
     <test name="Add Customer Test">
@@ -14,6 +15,12 @@
     <test name="Add Account Test">
         <classes>
             <class name="lucy_pom_factory_test.testcases.AddAccountTest"></class>
+        </classes>
+    </test>
+
+    <test name="Bank Manager Display Test">
+        <classes>
+            <class name="lucy_pom_factory_test.testcases.BankManagerDisplayTest"></class>
         </classes>
     </test>
 </suite> <!-- Suite -->

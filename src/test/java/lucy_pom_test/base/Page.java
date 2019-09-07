@@ -4,7 +4,6 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import core.helpers.Const;
-import core.helpers.Log;
 import core.helpers.driverhelper.DriverManager;
 import core.helpers.driverhelper.DriverName;
 import core.helpers.driverhelper.OptionsMapper;
@@ -253,12 +252,13 @@ public class Page {
             test.log(LogStatus.INFO, "Verifying....");
             Assert.assertEquals(actual, expected);
         } catch (Throwable t) {
+            System.setProperty("org.uncommons.reportng.escape-output", "false");
             Utilities.captureScreenshot();
 
             //ReportNG
-            Reporter.log("<br>" + "Verification failed: " + t.getMessage() + "<br>");
-            Reporter.log("<a target=\"_blank\" href=" + Utilities.fileName + "><img src=" + Utilities.fileName + " height=200 width=200></a>");
+            Reporter.log("<a target=\"_blank\" href=" + Utilities.fileName + ">Screenshot link</a>");
             Reporter.log("<br>");
+            Reporter.log("<a target=\"_blank\" href=" + Utilities.fileName + "><img src=" + Utilities.fileName + " height=200 width=200></a>");
             Reporter.log("<br>");
 
             //Extent Report
