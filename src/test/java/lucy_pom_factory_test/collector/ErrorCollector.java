@@ -1,15 +1,17 @@
 package lucy_pom_factory_test.collector;
 
+import lucy_pom_factory_test.base.Page;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
+import org.testng.internal.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ErrorCollector {
+public class ErrorCollector extends Page {
     private static Map<ITestResult, List<Throwable>> verificationFailuresMap = new HashMap<ITestResult, List<Throwable>>();
 
     public static void assertTrue(boolean condition) {
@@ -88,9 +90,7 @@ public class ErrorCollector {
         try {
             assertEquals(actual, expected);
         } catch (Throwable e) {
-
             addVerificationFailure(e);
-
         }
     }
 
@@ -99,9 +99,8 @@ public class ErrorCollector {
         try {
             assertEquals(actual, expected);
         } catch (Throwable e) {
-
+            log.error("Verification failed due to:\n" + Utils.shortStackTrace(e, false));
             addVerificationFailure(e);
-
         }
     }
 

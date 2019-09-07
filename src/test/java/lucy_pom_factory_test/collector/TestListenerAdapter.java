@@ -20,13 +20,13 @@ public class TestListenerAdapter implements IInvokedMethodListener {
 
             List<Throwable> verificationFailures = ErrorCollector.getVerificationFailures();
 
-            //if there are verification failures...
+            //if there are verification failures after running a test method (get this form ErrorCollector)
             if (verificationFailures.size() > 0) {
 
-                //set the test to failed
+                //set the test method to failed
                 result.setStatus(ITestResult.FAILURE);
 
-                //if there is an assertion failure add it to verificationFailures
+                //if there is an assertion failure (total throwable object count) add it to verificationFailures
                 if (result.getThrowable() != null) {
                     verificationFailures.add(result.getThrowable());
                 }
@@ -36,24 +36,28 @@ public class TestListenerAdapter implements IInvokedMethodListener {
                 if (size == 1) {
                     result.setThrowable(verificationFailures.get(0));
                 } else {
-                    //create a failure message with all failures and stack traces (except last failure)
-                    StringBuffer failureMessage = new StringBuffer("Multiple failures (").append(size).append("):\n\n");
+                    //Then create a customized failure message with all failures and stack traces (except last failure)
+                    StringBuilder failureMessage = new StringBuilder("There are (").append(size).append(") failures:\n\n");
                     for (int i = 0; i < size - 1; i++) {
                         failureMessage.append("Failure ").append(i + 1).append(" of ").append(size).append(":\n");
                         Throwable t = verificationFailures.get(i);
-                        String fullStackTrace = Utils.stackTrace(t, false)[1];
+                        String fullStackTrace = Utils.shortStackTrace(t, false);
                         failureMessage.append(fullStackTrace).append("\n\n");
                     }
 
-                    //final failure
+                    //final failure - without full stack to make report more shorter
                     Throwable last = verificationFailures.get(size - 1);
                     failureMessage.append("Failure ").append(size).append(" of ").append(size).append(":\n");
                     failureMessage.append(last.toString());
 
-                    //set merged throwable
+                    //Then merge them all together
                     Throwable merged = new Throwable(failureMessage.toString());
+
+                    //From here we can have all throwable message to report
+                    //But still need to add shortcut to extend full stack for the last throwable, right?
                     merged.setStackTrace(last.getStackTrace());
 
+                    //Set all failure message to the method results, so it can be throw in console and reportNG
                     result.setThrowable(merged);
                 }
             }
