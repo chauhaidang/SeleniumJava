@@ -21,8 +21,9 @@ public class BankManager extends Page {
         return new AddCustomer();
     }
 
-    public void goToOpenAccount(){
+    public OpenAccount goToOpenAccount() {
         bankManagerObject.btnOpenAccount.click();
+        return new OpenAccount();
     }
 
     public void goToCustomerInquiry(){

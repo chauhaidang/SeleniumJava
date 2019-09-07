@@ -1,6 +1,5 @@
 package lucy_pom_factory_test.pages.actions;
 
-import com.relevantcodes.extentreports.LogStatus;
 import lucy_pom_factory_test.base.ConfigConst;
 import lucy_pom_factory_test.base.Page;
 import lucy_pom_factory_test.pages.locators.AddCustomerObjects;
@@ -55,5 +54,9 @@ public class AddCustomer extends Page {
         CustomerModel newCustomer = fillCustomerForm(customerModel);
         submitCustomer();
         return newCustomer;
+    }
+
+    public void acceptNotification() {
+        driver.switchTo().alert().accept();
     }
 }
