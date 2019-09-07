@@ -2,7 +2,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="POM FACTORY Testing">
     <listeners>
-        <listener class-name="lucy_pom_factory_test.listeners.*"></listener>
         <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
     </listeners>
+
+    <test name="Add Customer Test">
+        <classes>
+            <class name="lucy_pom_factory_test.testcases.AddCustomerTest"></class>
+        </classes>
+    </test>
+
+    <test name="Add Account Test">
+        <classes>
+            <class name="lucy_pom_factory_test.testcases.AddAccountTest"></class>
+        </classes>
+    </test>
 </suite> <!-- Suite -->

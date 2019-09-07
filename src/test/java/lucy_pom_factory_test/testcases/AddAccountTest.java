@@ -1,4 +1,4 @@
-package lucy_pom_factory_test.rough;
+package lucy_pom_factory_test.testcases;
 
 import lucy_pom_factory_test.pages.actions.AddCustomer;
 import lucy_pom_factory_test.pages.actions.BankManager;
@@ -8,13 +8,15 @@ import lucy_pom_factory_test.pages.model.AccountBuilder;
 import lucy_pom_factory_test.pages.model.AccountModel;
 import lucy_pom_factory_test.pages.model.CustomerBuilder;
 import lucy_pom_factory_test.pages.model.CustomerModel;
+import org.testng.annotations.Test;
 
 import static lucy_pom_factory_test.base.Page.initConfiguration;
 import static lucy_pom_factory_test.base.Page.quitBrowser;
 
-public class CreateAccountTest {
+public class AddAccountTest {
 
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public void AddingAccount01() {
         initConfiguration();
 
         //Go to bank manager
@@ -39,7 +41,6 @@ public class CreateAccountTest {
         openAccount.acceptNotification();
         newAccount.printAccountInfo();
 
-        Thread.sleep(3000);
         quitBrowser();
     }
 }
