@@ -6,6 +6,10 @@ import lucy_pom_factory_test.pages.locators.HomeObjects;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
+/**
+ * Home Page
+ * Home Page does stick to TopNavigation Page
+ */
 public class Home extends Page {
 
     private HomeObjects homeObjects;
@@ -17,19 +21,12 @@ public class Home extends Page {
         PageFactory.initElements(factory, homeObjects);
     }
 
-    public void goToHome(){
-        homeObjects.btnHome.click();
-    }
-
-    public String getTitle(){
-        return homeObjects.lblHomeHeading.getText();
-    }
-
     public void goToCustomerLogin(){
         homeObjects.btnCustomerLogin.click();
     }
 
-    public void goToBankManagerLogin(){
+    public BankManager goToBankManagerLogin() {
         homeObjects.btnBankManagerLogin.click();
+        return new BankManager();
     }
 }

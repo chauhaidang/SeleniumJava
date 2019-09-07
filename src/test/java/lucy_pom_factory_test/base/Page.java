@@ -3,16 +3,15 @@ package lucy_pom_factory_test.base;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import core.helpers.Const;
-
 import core.helpers.ExcelReader;
 import core.helpers.driverhelper.DriverManager;
 import core.helpers.driverhelper.DriverName;
 import core.helpers.driverhelper.OptionsMapper;
+import lucy_pom_factory_test.pages.actions.TopNavigation;
 import lucy_pom_factory_test.utilities.ExtentManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -21,7 +20,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class Page {
 
@@ -41,7 +39,7 @@ public class Page {
     public ExtentReports rep = ExtentManager.getInstance();
     //This will listen and manage all log report for your testcases for the listener
     public static ExtentTest test;
-    public static WebElement dropdown;
+    public static TopNavigation topNav;
 
     public static void initConfiguration(){
         //Set up driver
@@ -74,6 +72,8 @@ public class Page {
         log.debug("Maximized window!");
 //        driver.manage().timeouts().implicitlyWait(ConfigConst.timeout, TimeUnit.SECONDS);
 //        log.debug("Set implicit wait time out to "+ ConfigConst.timeout);
+
+        topNav = new TopNavigation(driver); //Init top navigation page because it always appear along with all page
     }
 
     public static void quitBrowser(){

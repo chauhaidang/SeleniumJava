@@ -16,8 +16,9 @@ public class BankManager extends Page {
         PageFactory.initElements(factory, bankManagerObject);
     }
 
-    public void goToAddCustomer(){
+    public AddCustomer goToAddCustomer() {
         bankManagerObject.btnAddCustomer.click();
+        return new AddCustomer();
     }
 
     public void goToOpenAccount(){
