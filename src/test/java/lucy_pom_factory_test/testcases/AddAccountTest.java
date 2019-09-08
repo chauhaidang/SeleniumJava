@@ -50,7 +50,5 @@ public class AddAccountTest {
                 .withCurrencyType("Dollar")
                 .build());
         openAccount.acceptNotification();
-        newAccount.printAccountInfo();
-
     }
 }

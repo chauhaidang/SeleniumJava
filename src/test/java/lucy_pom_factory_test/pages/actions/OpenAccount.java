@@ -4,9 +4,10 @@ import lucy_pom_factory_test.base.ConfigConst;
 import lucy_pom_factory_test.base.Page;
 import lucy_pom_factory_test.pages.locators.OpenAccountObjects;
 import lucy_pom_factory_test.pages.model.AccountModel;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class OpenAccount extends Page {
 
@@ -19,21 +20,20 @@ public class OpenAccount extends Page {
     }
 
     public void selectCustomerName(String customerName) {
-        Select select = new Select(openAccountObjects.accountDropdown);
-        select.selectByVisibleText(customerName);
+        select(openAccountObjects.accountDropdown, customerName);
     }
 
     public void selectCurrency(String currencyType) {
-        Select select = new Select(openAccountObjects.currencyDropdown);
-        select.selectByVisibleText(currencyType);
+        select(openAccountObjects.currencyDropdown, currencyType);
     }
 
     public void clickProcess() {
-        openAccountObjects.btnProcess.click();
+        click(openAccountObjects.btnProcess);
     }
 
     public void acceptNotification() {
-        driver.switchTo().alert().accept();
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.accept();
     }
 
     public AccountModel submitNewAccountWith(AccountModel accountModel) {

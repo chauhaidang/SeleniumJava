@@ -10,8 +10,8 @@ public class ElementAction extends Log {
 
     public static void clickSupport(WebElement element) {
         try {
+            info("Clicking on an Element : " + element);
             element.click();
-            info("Clicked on an Element : " + element);
         } catch (Throwable e) {
             error("Can not clicked on an Element: " + element + " due to " + e.getMessage());
             throw e;

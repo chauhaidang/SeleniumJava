@@ -39,6 +39,6 @@ public class BankManager extends Page {
     }
 
     public String getFindBysTab() {
-        return bankManagerObject.tabNavigatorFirst.getText();
+        return getText(bankManagerObject.tabNavigatorFirst);
     }
 }

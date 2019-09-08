@@ -42,6 +42,7 @@ public class AddCustomerTest {
                 .withPostCode("123")
                 .build()
         );
-        newCustomer.printCustomerInfo();
+        addCustomer.clickAddCustomer();
+        addCustomer.acceptNotification();
     }
 }

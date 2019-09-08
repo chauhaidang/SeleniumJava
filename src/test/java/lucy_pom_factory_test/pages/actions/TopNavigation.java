@@ -1,6 +1,7 @@
 package lucy_pom_factory_test.pages.actions;
 
 import lucy_pom_factory_test.base.ConfigConst;
+import lucy_pom_factory_test.base.Page;
 import lucy_pom_factory_test.pages.locators.TopNavigationObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -17,11 +18,11 @@ public class TopNavigation {
     }
 
     public Home goToHome() {
-        topNavigationObjects.btnHome.click();
+        Page.click(topNavigationObjects.btnHome);
         return new Home();
     }
 
     public String getTitle() {
-        return topNavigationObjects.lblHomeHeading.getText();
+        return Page.getText(topNavigationObjects.lblHomeHeading);
     }
 }
