@@ -47,8 +47,8 @@ public class Page {
 
     public static void click(WebElement element) {
         try {
-            test.log(LogStatus.INFO, "Clicking on an Element : " + element + ".....");
             ElementAction.clickSupport(element);
+            test.log(LogStatus.INFO, "Clicked on an Element : " + element);
         } catch (Throwable e) {
             ErrorCollector.addThrowableMessages(e);
         }
@@ -57,8 +57,8 @@ public class Page {
     public static String getText(WebElement element) {
         String value = null;
         try {
-            test.log(LogStatus.INFO, "Getting text from element: " + element + ".....");
             value = ElementAction.getTextSupport(element);
+            test.log(LogStatus.INFO, "Got text from element: " + element);
         } catch (Throwable e) {
             ErrorCollector.addThrowableMessages(e);
         }
@@ -67,8 +67,8 @@ public class Page {
 
     public static void type(WebElement element, String value){
         try{
-            test.log(LogStatus.INFO, "Typing text '" + value + "' to element: " + element + ".....");
             ElementAction.typeSupport(element, value);
+            test.log(LogStatus.INFO, "Typed text '" + value + "' to element: " + element);
         }
         catch (Throwable e){
             ErrorCollector.addThrowableMessages(e);
@@ -77,8 +77,8 @@ public class Page {
 
     public static void select(WebElement element, String value){
         try{
-            test.log(LogStatus.INFO, "Selecting option: " + value + " from dropdown: " + element + ".....");
             ElementAction.selectSupport(element, value);
+            test.log(LogStatus.INFO, "Selected option: " + value + " from dropdown: " + element);
         }
         catch (Throwable e){
             ErrorCollector.addThrowableMessages(e);
@@ -114,8 +114,6 @@ public class Page {
         log.debug("Navigated to URL "+ ConfigConst.url);
         driver.manage().window().maximize();
         log.debug("Maximized window!");
-//        driver.manage().timeouts().implicitlyWait(ConfigConst.timeout, TimeUnit.SECONDS);
-//        log.debug("Set implicit wait time out to "+ ConfigConst.timeout);
 
         topNav = new TopNavigation(driver); //Init top navigation page because it always appear along with all page
         wait = new WebDriverWait(driver, ConfigConst.timeout);

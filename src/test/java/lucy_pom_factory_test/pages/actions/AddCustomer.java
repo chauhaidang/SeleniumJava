@@ -1,13 +1,12 @@
 package lucy_pom_factory_test.pages.actions;
 
+import core.helpers.driverhelper.DriverManager;
 import lucy_pom_factory_test.base.ConfigConst;
 import lucy_pom_factory_test.base.Page;
 import lucy_pom_factory_test.pages.locators.AddCustomerObjects;
 import lucy_pom_factory_test.pages.model.CustomerModel;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AddCustomer extends Page {
 
@@ -27,6 +26,7 @@ public class AddCustomer extends Page {
     }
 
     public void clickAddCustomer() {
+        DriverManager.ignoreAlert(driver);
         click(addCustomerObjects.btnAddCustomer);
     }
 
@@ -34,10 +34,5 @@ public class AddCustomer extends Page {
         CustomerModel newCustomer = fillCustomerForm(customerModel);
         clickAddCustomer();
         return newCustomer;
-    }
-
-    public void acceptNotification() {
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        alert.accept();
     }
 }

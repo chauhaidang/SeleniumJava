@@ -1,13 +1,12 @@
 package lucy_pom_factory_test.pages.actions;
 
+import core.helpers.driverhelper.DriverManager;
 import lucy_pom_factory_test.base.ConfigConst;
 import lucy_pom_factory_test.base.Page;
 import lucy_pom_factory_test.pages.locators.OpenAccountObjects;
 import lucy_pom_factory_test.pages.model.AccountModel;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class OpenAccount extends Page {
 
@@ -28,12 +27,8 @@ public class OpenAccount extends Page {
     }
 
     public void clickProcess() {
+        DriverManager.ignoreAlert(driver);
         click(openAccountObjects.btnProcess);
-    }
-
-    public void acceptNotification() {
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        alert.accept();
     }
 
     public AccountModel submitNewAccountWith(AccountModel accountModel) {
