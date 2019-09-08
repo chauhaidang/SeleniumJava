@@ -7,6 +7,7 @@ import core.helpers.Const;
 import core.helpers.ExcelReader;
 import core.helpers.driverhelper.DriverManager;
 import core.helpers.driverhelper.DriverName;
+import core.helpers.driverhelper.DriverOpts;
 import core.helpers.driverhelper.OptionsMapper;
 import core.helpers.elementHelper.ElementAction;
 import lucy_pom_factory_test.collector.ErrorCollector;
@@ -99,10 +100,11 @@ public class Page {
             List<String> args = new OptionsMapper(DriverName.CHROME)
                     .withOption("--disable-extensions")
                     .withOption("--disable-infobars")
+                    .withOption(DriverOpts.HEADLESS)
                     .build();
             options.addArguments(args);
 
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(options);
             log.debug("Successfully set up " + ConfigConst.browser + " and launched");
         } else if (ConfigConst.browser.equalsIgnoreCase(DriverName.FIREFOX)) {
             DriverManager.setupDriver(DriverName.FIREFOX);
