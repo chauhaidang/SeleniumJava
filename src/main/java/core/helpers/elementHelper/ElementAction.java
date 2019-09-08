@@ -10,7 +10,7 @@ public class ElementAction extends Log {
 
     public static void clickSupport(WebElement element) {
         try {
-            info("Clicking on an Element : " + element);
+            info("Clicking on an Element : " + element + ".....");
             element.click();
         } catch (Throwable e) {
             error("Can not clicked on an Element: " + element + " due to " + e.getMessage());
@@ -20,8 +20,8 @@ public class ElementAction extends Log {
 
     public static void typeSupport(WebElement element, String value) {
         try {
+            info("Typing text '" + value + "' to element" + element + ".....");
             element.sendKeys(value);
-            info("Typed text '" + value + "' to element: " + element);
         } catch (Throwable e) {
             error("Can not type text on an element: " + element + " due to " + e.getMessage());
             throw e;
@@ -30,10 +30,10 @@ public class ElementAction extends Log {
 
     public static void selectSupport(WebElement elementToSelect, String value) {
         try {
+            info("Selecting to dropdown element: " + elementToSelect + ".....");
             Select select = new Select(elementToSelect);
-            info("Selected to dropdown element: " + elementToSelect);
+            info("Selecting option with text: " + value + ".....");
             select.selectByVisibleText(value);
-            info("Selected option with text: " + value);
         } catch (Throwable e) {
             error("Can not select to dropdown due to: " + e.getMessage());
             throw e;
@@ -42,8 +42,8 @@ public class ElementAction extends Log {
 
     public static boolean isElementAvailable(WebElement element, WebDriverWait wait) {
         try {
+            info("Finding the Element : " + element + ".....");
             wait.until(ExpectedConditions.visibilityOf(element));
-            info("Found the Element : " + element);
             return true;
         } catch (Throwable t) {
             error("Error while finding an element : " + element + " exception message is : " + t.getMessage());
@@ -54,8 +54,8 @@ public class ElementAction extends Log {
     public static String getTextSupport(WebElement element) {
         String elementValue = null;
         try {
+            info("Getting text from element: " + element + ".....");
             elementValue = element.getText();
-            info("Got text from element: " + element + " with value: " + elementValue);
         } catch (Throwable e) {
             error("Can not get text from element: " + element);
             throw e;
@@ -66,8 +66,8 @@ public class ElementAction extends Log {
 
     public static Select getDropdownSelector(WebElement element) {
         try {
+            info("Finding the select dropdown of element: " + element + ".....");
             Select select = new Select(element);
-            info("Found the select dropdown of element: " + element);
             return select;
         } catch (Throwable e) {
             error("Can not find dropdown due to: " + e.getMessage());

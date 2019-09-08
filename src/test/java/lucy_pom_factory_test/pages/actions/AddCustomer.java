@@ -30,7 +30,7 @@ public class AddCustomer extends Page {
         click(addCustomerObjects.btnAddCustomer);
     }
 
-    public CustomerModel createCustomer(CustomerModel customerModel) {
+    public CustomerModel submitCustomer(CustomerModel customerModel) {
         CustomerModel newCustomer = fillCustomerForm(customerModel);
         clickAddCustomer();
         return newCustomer;

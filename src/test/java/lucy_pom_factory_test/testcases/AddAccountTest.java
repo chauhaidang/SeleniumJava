@@ -36,7 +36,7 @@ public class AddAccountTest {
 
         //Go to add customer page and add a new customer
         AddCustomer addCustomer = bankManager.goToAddCustomer();
-        CustomerModel newCustomer = addCustomer.createCustomer(new CustomerBuilder()
+        CustomerModel newCustomer = addCustomer.submitCustomer(new CustomerBuilder()
                 .withFirstName("Dang")
                 .withLastName("Chau")
                 .withPostCode("123")
