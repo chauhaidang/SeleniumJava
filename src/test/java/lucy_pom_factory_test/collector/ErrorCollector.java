@@ -1,6 +1,5 @@
 package lucy_pom_factory_test.collector;
 
-import lucy_pom_factory_test.base.Page;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -12,7 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ErrorCollector extends Page {
+import static core.helpers.Log.error;
+
+public class ErrorCollector {
     private static Map<ITestResult, List<Throwable>> throwableMessageMap = new HashMap<ITestResult, List<Throwable>>();
 
     public static void assertTrue(boolean condition) {
@@ -100,7 +101,7 @@ public class ErrorCollector extends Page {
         try {
             assertEquals(actual, expected);
         } catch (Throwable e) {
-            log.error("Verification failed due to:\n" + Utils.shortStackTrace(e, false));
+            error("Verification failed due to:\n" + Utils.shortStackTrace(e, false));
 //
 //            //TestNG Report and ReportNG
 //            System.setProperty("org.uncommons.reportng.escape-output", "false");

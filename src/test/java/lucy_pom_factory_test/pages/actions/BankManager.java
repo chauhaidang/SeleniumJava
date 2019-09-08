@@ -17,17 +17,17 @@ public class BankManager extends Page {
     }
 
     public AddCustomer goToAddCustomer() {
-        bankManagerObject.btnAddCustomer.click();
+        click(bankManagerObject.btnAddCustomer);
         return new AddCustomer();
     }
 
     public OpenAccount goToOpenAccount() {
-        bankManagerObject.btnOpenAccount.click();
+        click(bankManagerObject.btnOpenAccount);
         return new OpenAccount();
     }
 
     public void goToCustomerInquiry(){
-        bankManagerObject.btnCustomersInquiry.click();
+        click(bankManagerObject.btnCustomersInquiry);
     }
 
     public int findTabCount() {

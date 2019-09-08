@@ -2,16 +2,20 @@ package lucy_pom_factory_test.base;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import core.helpers.Const;
 import core.helpers.ExcelReader;
 import core.helpers.driverhelper.DriverManager;
 import core.helpers.driverhelper.DriverName;
 import core.helpers.driverhelper.OptionsMapper;
+import core.helpers.elementHelper.ElementAction;
+import lucy_pom_factory_test.collector.ErrorCollector;
 import lucy_pom_factory_test.pages.actions.TopNavigation;
 import lucy_pom_factory_test.utilities.ExtentManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -40,6 +44,26 @@ public class Page {
     //This will listen and manage all log report for your testcases for the listener
     public static ExtentTest test;
     public static TopNavigation topNav;
+
+    public static void click(WebElement element) {
+        try {
+            ElementAction.clickSupport(element);
+            test.log(LogStatus.INFO, "Clicked on an Element : " + element);
+        } catch (Throwable e) {
+            ErrorCollector.addThrowableMessages(e);
+        }
+    }
+
+    public static String getText(WebElement element) {
+        String value = null;
+        try {
+            value = ElementAction.getTextSupport(element);
+            test.log(LogStatus.INFO, "Got text from element: " + element + "with value: " + value);
+        } catch (Throwable e) {
+            ErrorCollector.addThrowableMessages(e);
+        }
+        return value;
+    }
 
     public static void initConfiguration(){
         //Set up driver

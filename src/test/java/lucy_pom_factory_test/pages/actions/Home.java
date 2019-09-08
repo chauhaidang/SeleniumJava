@@ -22,11 +22,11 @@ public class Home extends Page {
     }
 
     public void goToCustomerLogin(){
-        homeObjects.btnCustomerLogin.click();
+        click(homeObjects.btnCustomerLogin);
     }
 
     public BankManager goToBankManagerLogin() {
-        homeObjects.btnBankManagerLogin.click();
+        click(homeObjects.btnBankManagerLogin);
         return new BankManager();
     }
 }
