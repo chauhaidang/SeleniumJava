@@ -22,7 +22,7 @@
                 <configuration>
                     <testFailureIgnore> false </testFailureIgnore>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/runner/lucy_pom_test/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/runner/lucy_pom_factory_test/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

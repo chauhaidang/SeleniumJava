@@ -4,6 +4,7 @@
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
         <listener class-name="lucy_pom_factory_test.collector.TestListenerAdapter"></listener>
+        <listener class-name="lucy_pom_factory_test.listeners.CustomListeners"></listener>
     </listeners>
 
     <test name="Add Customer Test">

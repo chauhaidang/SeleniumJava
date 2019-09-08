@@ -6,13 +6,14 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.internal.Utils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ErrorCollector extends Page {
-    private static Map<ITestResult, List<Throwable>> verificationFailuresMap = new HashMap<ITestResult, List<Throwable>>();
+    private static Map<ITestResult, List<Throwable>> throwableMessageMap = new HashMap<ITestResult, List<Throwable>>();
 
     public static void assertTrue(boolean condition) {
         Assert.assertTrue(condition);
@@ -50,7 +51,7 @@ public class ErrorCollector extends Page {
         try {
             assertTrue(condition);
         } catch (Throwable e) {
-            addVerificationFailure(e);
+            addThrowableMessages(e);
         }
     }
 
@@ -58,7 +59,7 @@ public class ErrorCollector extends Page {
         try {
             assertTrue(condition, message);
         } catch (Throwable e) {
-            addVerificationFailure(e);
+            addThrowableMessages(e);
         }
     }
 
@@ -66,7 +67,7 @@ public class ErrorCollector extends Page {
         try {
             assertFalse(condition);
         } catch (Throwable e) {
-            addVerificationFailure(e);
+            addThrowableMessages(e);
         }
     }
 
@@ -74,7 +75,7 @@ public class ErrorCollector extends Page {
         try {
             assertFalse(condition, message);
         } catch (Throwable e) {
-            addVerificationFailure(e);
+            addThrowableMessages(e);
         }
     }
 
@@ -82,7 +83,7 @@ public class ErrorCollector extends Page {
         try {
             assertEquals(actual, expected);
         } catch (Throwable e) {
-            addVerificationFailure(e);
+            addThrowableMessages(e);
         }
     }
 
@@ -90,17 +91,29 @@ public class ErrorCollector extends Page {
         try {
             assertEquals(actual, expected);
         } catch (Throwable e) {
-            addVerificationFailure(e);
+            addThrowableMessages(e);
         }
     }
 
 
-    public static void verifyEquals(int actual, int expected) {
+    public static void verifyEquals(int actual, int expected) throws IOException {
         try {
             assertEquals(actual, expected);
         } catch (Throwable e) {
             log.error("Verification failed due to:\n" + Utils.shortStackTrace(e, false));
-            addVerificationFailure(e);
+//
+//            //TestNG Report and ReportNG
+//            System.setProperty("org.uncommons.reportng.escape-output", "false");
+//            Utilities.captureScreenshot();
+//            Reporter.log("<a target=\"_blank\" href="+ Utilities.fileName+">Screenshot link</a>");
+//            Reporter.log("<br>");
+//            Reporter.log("<a target=\"_blank\" href="+Utilities.fileName+"><img src="+Utilities.fileName+" height=200 width=200></a>");
+//
+//            //ExtentReport
+//            test.log(LogStatus.FAIL, " FAILED POINT! \n");
+//            test.log(LogStatus.INFO, test.addScreenCapture(Utilities.fileName)); //This should not be a failure but information
+
+            addThrowableMessages(e);
         }
     }
 
@@ -108,7 +121,7 @@ public class ErrorCollector extends Page {
         try {
             assertEquals(actual, expected);
         } catch (Throwable e) {
-            addVerificationFailure(e);
+            addThrowableMessages(e);
         }
     }
 
@@ -116,7 +129,7 @@ public class ErrorCollector extends Page {
         try {
             assertEquals(actual, expected);
         } catch (Throwable e) {
-            addVerificationFailure(e);
+            addThrowableMessages(e);
         }
     }
 
@@ -124,15 +137,16 @@ public class ErrorCollector extends Page {
         Assert.fail(message);
     }
 
-    public static List<Throwable> getVerificationFailures() {
-        List<Throwable> verificationFailures = verificationFailuresMap.get(Reporter.getCurrentTestResult());
-        return verificationFailures == null ? new ArrayList<Throwable>() : verificationFailures;
+    public static List<Throwable> getThrowableMessages() {
+        List<Throwable> listThrowableMessages = throwableMessageMap.get(Reporter.getCurrentTestResult());
+        return listThrowableMessages == null ? new ArrayList<Throwable>() : listThrowableMessages;
     }
 
-    public static void addVerificationFailure(Throwable e) {
-        List<Throwable> verificationFailures = getVerificationFailures();
-        verificationFailuresMap.put(Reporter.getCurrentTestResult(), verificationFailures);
-        verificationFailures.add(e);
+    public static void addThrowableMessages(Throwable e) {
+        List<Throwable> listThrowableMessages = getThrowableMessages();
+        //Update the throwableMessageMap by put to the same key
+        throwableMessageMap.put(Reporter.getCurrentTestResult(), listThrowableMessages);
+        listThrowableMessages.add(e);
     }
 
 }

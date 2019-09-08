@@ -33,4 +33,12 @@ public class BankManager extends Page {
     public int findTabCount() {
         return bankManagerObject.tabNavigators.size();
     }
+
+    public int count() {
+        return bankManagerObject.tab2.size();
+    }
+
+    public String getFindBysTab() {
+        return bankManagerObject.tabNavigatorFirst.getText();
+    }
 }

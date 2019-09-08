@@ -8,6 +8,8 @@ import lucy_pom_factory_test.pages.model.AccountBuilder;
 import lucy_pom_factory_test.pages.model.AccountModel;
 import lucy_pom_factory_test.pages.model.CustomerBuilder;
 import lucy_pom_factory_test.pages.model.CustomerModel;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static lucy_pom_factory_test.base.Page.initConfiguration;
@@ -15,10 +17,19 @@ import static lucy_pom_factory_test.base.Page.quitBrowser;
 
 public class AddAccountTest {
 
+
+    @BeforeTest
+    public void testSetUp() {
+        initConfiguration();
+    }
+
+    @AfterTest
+    public void testTearDown() {
+        quitBrowser();
+    }
+
     @Test
     public void AddingAccount01() {
-        initConfiguration();
-
         //Go to bank manager
         Home home = new Home();
         BankManager bankManager = home.goToBankManagerLogin();
@@ -41,6 +52,5 @@ public class AddAccountTest {
         openAccount.acceptNotification();
         newAccount.printAccountInfo();
 
-        quitBrowser();
     }
 }

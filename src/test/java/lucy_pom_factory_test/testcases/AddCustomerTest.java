@@ -6,16 +6,27 @@ import lucy_pom_factory_test.pages.actions.Home;
 import lucy_pom_factory_test.pages.model.CustomerBuilder;
 import lucy_pom_factory_test.pages.model.CustomerModel;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static lucy_pom_factory_test.base.Page.*;
 
 public class AddCustomerTest {
 
+
+    @BeforeTest
+    public void testSetUp() {
+        initConfiguration();
+    }
+
+    @AfterTest
+    public void testTearDown() {
+        quitBrowser();
+    }
+
     @Test
     public void AddingCustomer01() {
-        initConfiguration();
-
         Home home = topNav.goToHome();
         Assert.assertEquals(topNav.getTitle(), "XYZ Bank");
 
@@ -32,7 +43,5 @@ public class AddCustomerTest {
                 .build()
         );
         newCustomer.printCustomerInfo();
-
-        quitBrowser();
     }
 }

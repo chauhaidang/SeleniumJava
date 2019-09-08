@@ -1,25 +1,20 @@
 package lucy_pom_factory_test.utilities;
 
-import core.helpers.ExcelReader;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import lucy_pom_factory_test.base.Page;
 import org.testng.annotations.DataProvider;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Date;
-import java.util.Hashtable;
-import static core.helpers.Utilities.*;
 
-public class Utilities {
+import static core.helpers.Utilities.captureScreenshotSupport;
+import static core.helpers.Utilities.getDataSupport;
+
+public class Utilities extends Page {
 
     public static String fileName;
 
-    public static void captureScreenshot(WebDriver driver) throws IOException {
-        captureScreenshotSupport(driver, "/target/surefire-reports/html/");
+    public static void captureScreenshot() throws IOException {
+        fileName = captureScreenshotSupport(driver, "/target/surefire-reports/html/");
     }
 
     /**
@@ -29,6 +24,6 @@ public class Utilities {
      */
     @DataProvider(name="dp")
     public Object[][] getData(Method m) {
-        return getDataSupport(m, new ExcelReader(""));
+        return getDataSupport(m, excel);
     }
 }
