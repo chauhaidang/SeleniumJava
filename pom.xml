@@ -20,7 +20,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.1</version>
                 <configuration>
-                    <testFailureIgnore> false </testFailureIgnore>
+                    <testFailureIgnore>false</testFailureIgnore>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/runner/lucy_pom_factory_test/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
@@ -44,7 +44,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
-            <!--            <scope>test</scope>&lt;!&ndash; this is to limit the junit library to apply only to src/test &ndash;&gt;-->
+            <!--            <scope>test</scope> &lt;!&ndash; this is to limit the junit library to apply only to src/test &ndash;&gt;-->
             <!--<scope>compile</scope>--> <!--default scope of maven, apply on all file -->
             <!--<scope>runtime</scope>--> <!--Only available at the runtime, that means this library will not be required for compilation but for runtime and test classpath-->
             <!--<scope>provided</scope>--> <!--like compile, but indicate that you expect the jdk or container to provide the dependency at runtime at the specific container (means not the whole project build need this)-->
@@ -155,57 +155,11 @@
             <version>${log4j2.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-core -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-core</artifactId>
-            <version>${cucumber.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-html -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-html</artifactId>
-            <version>0.2.3</version>
-        </dependency>
-
-
         <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-jvm-deps -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-jvm-deps</artifactId>
-            <version>1.0.5</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-jvm -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-jvm</artifactId>
-            <version>${cucumber.version}</version>
-            <type>pom</type>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/info.cukes/gherkin -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>gherkin</artifactId>
-            <version>2.12.2</version>
-            <scope>provided</scope>
         </dependency>
 
     </dependencies>
