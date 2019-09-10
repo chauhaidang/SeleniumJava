@@ -16,8 +16,8 @@ public class login {
         System.out.println("And user navigate to home page");
     }
 
-    @When("^user go to ([a-zA-Z]{1,}) login$")
-    public void userGoToCustomerLogin(String arg0) {
+    @When("^user go to ([^\"]*) login$")
+    public void userGoToParamLogin(String arg0) {
         System.out.println("When user go to " + arg0 + " login");
     }
 
@@ -31,9 +31,9 @@ public class login {
         System.out.println("And user should see username dropdown display with default info");
     }
 
-    @When("^user select username$")
-    public void userSelectUsername() {
-        System.out.println("When user select username");
+    @When("^user select username ([^\"]*)$")
+    public void userSelectUsername(String arg0) {
+        System.out.println("When user select username " + arg0);
     }
 
     @And("^user click login$")
