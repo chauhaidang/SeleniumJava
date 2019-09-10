@@ -12,3 +12,9 @@ Feature: Login
     When user select username
     And user click login
     Then user should see correct welcome status on customer detail page
+
+  Scenario: verify user can login successfully as a bank manager
+    Given user navigate to bank app
+    And user navigate to home page
+    When user go to manager login
+    Then user should see 3 tabs to manage customers

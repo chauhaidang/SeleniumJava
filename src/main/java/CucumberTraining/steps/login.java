@@ -16,9 +16,9 @@ public class login {
         System.out.println("And user navigate to home page");
     }
 
-    @When("^user go to customer login$")
-    public void userGoToCustomerLogin() {
-        System.out.println("When user go to customer login");
+    @When("^user go to ([a-zA-Z]{1,}) login$")
+    public void userGoToCustomerLogin(String arg0) {
+        System.out.println("When user go to " + arg0 + " login");
     }
 
     @Then("^user should see username title display correctly$")
@@ -44,5 +44,10 @@ public class login {
     @Then("^user should see correct welcome status on customer detail page$")
     public void userShouldSeeCorrectWelcomeStatusOnCustomerDetailPage() {
         System.out.println("Then user should see correct welcome status on customer detail page");
+    }
+
+    @Then("^user should see (\\d+) tabs to manage customers$")
+    public void userShouldSeeTabsToManageCustomers(int arg0) {
+        System.out.println("Then user should see " + arg0 + " tabs to manage customer");
     }
 }
