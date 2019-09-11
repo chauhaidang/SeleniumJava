@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
         //This glues automatically is searched in classpath because they are all java class, right? So just give the relative path
         glue = {"CucumberTraining/steps"},
         monochrome = true,
-        tags = {"@smoke"})
+        tags = {"@smoke"},
+        plugin = {"pretty", "html:target/cucumber"})
 public class runner {
 }
