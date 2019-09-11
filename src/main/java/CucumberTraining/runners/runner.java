@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
         features = Const.MAIN_PATH + "/CucumberTraining/feature/",
         //This glues automatically is searched in classpath because they are all java class, right? So just give the relative path
         glue = {"CucumberTraining/steps"},
-        monochrome = true)
+        monochrome = true,
+        tags = {"@regression, @smoke"})
 public class runner {
 }
