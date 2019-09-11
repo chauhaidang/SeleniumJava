@@ -7,7 +7,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        //This must be the path count from working directory
         features = Const.MAIN_PATH + "/CucumberTraining/feature/",
-        glue = {"CucumberTraining.steps"})
+        //This glues automatically is searched in classpath because they are all java class, right? So just give the relative path
+        glue = {"CucumberTraining/steps"},
+        monochrome = true)
 public class runner {
 }

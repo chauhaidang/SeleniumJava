@@ -1,8 +1,4 @@
-Feature: customer detail
-  This feature is to test all customer detail functionality
-  As a user
-  I can navigate to customer detail page and I can interact with my account number
-  as well as I can see my all information
+Feature: Learn data table
 
   Scenario: Verify that user can see the account information
     Given user navigate to bank app
