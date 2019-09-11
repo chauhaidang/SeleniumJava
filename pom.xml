@@ -176,5 +176,13 @@
             <version>${cucumber.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.vimalselvam/cucumber-extentsreport -->
+        <dependency>
+            <groupId>com.vimalselvam</groupId>
+            <artifactId>cucumber-extentsreport</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
+
     </dependencies>
 </project>

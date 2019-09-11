@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extentreports>
+    <configuration>
+        <!--        set theme-->
+        <theme>standard</theme>
+
+        <!--        set document enconding to UTF-8-->
+        <enconding>UTF-8</enconding>
+
+        <!--        set protocol for script and stylesheet-->
+        <protocol>https</protocol>
+
+        <!--        title of report-->
+        <documentTitle>Automation Test Report</documentTitle>
+
+        <!--        Report name-->
+        <reportName>Automation Report for</reportName>
+
+        <!--        Report headline-->
+        <reportHeadline>BDD FRAMEWORK</reportHeadline>
+
+        <!--        data format-->
+        <dateFormat>yyyy-MM-dd</dateFormat>
+
+        <!--        time format-->
+        <timeFormat>HH:mm:ss</timeFormat>
+
+        <!--        custom javascript-->
+        <scripts>
+            <![CDATA[
+                $(document).ready(function() {
+
+                });
+            ]]>
+        </scripts>
+
+        <!--        custome style-->
+        <styles>
+            <![CDATA[]
+
+            ]]>
+        </styles>
+    </configuration>
+</extentreports>
