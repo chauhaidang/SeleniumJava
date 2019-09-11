@@ -14,7 +14,7 @@ Feature: Login
     Then user should see correct welcome status as "Welcome Harry Potter !!" on customer detail page
 
   Scenario: verify user can login successfully as a bank manager
-    Given user navigate to bank app
+    Given user navigate to bank app "http://www.way2automation.com/angularjs-protractor/banking/#/login"
     And user navigate to home page
     When user go to manager login
     Then user should see 3 tabs to manage customers
