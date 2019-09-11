@@ -19,6 +19,16 @@ public class login {
         System.out.println("Close browser!");
     }
 
+    @Before("@smoke")
+    public void beforeEachScenarioOfSmoke() {
+        System.out.println("Do some thing before smoke test");
+    }
+
+    @After("@smoke")
+    public void afterEachScenarioOfSmoke() {
+        System.out.println("Do some thing after smoke test");
+    }
+
     @Given("^user navigate to bank app$")
     public void userNavigateToBankApp() {
         System.out.println("Given user navigate to bank app");
