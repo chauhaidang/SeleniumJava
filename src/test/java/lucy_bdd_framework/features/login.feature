@@ -8,7 +8,7 @@ Feature: Login
     And user navigate to home page
     When user go to customer login
     Then user should see username title display as "Your Name :"
-    And user should see username dropdown display as "---Your Name---"
+    And user should see username dropdown display as "---Your Name2---"
     When user select username Harry Potter
     And user click login
     Then user should see correct welcome status as "Welcome Harry Potter !!" on customer detail page

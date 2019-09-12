@@ -1,10 +1,16 @@
 package core.helpers.elementHelper;
 
 import core.helpers.Log;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Properties;
+
+import static core.helpers.Const.*;
 
 public class ElementAction extends Log {
 
@@ -14,6 +20,16 @@ public class ElementAction extends Log {
             element.click();
         } catch (Throwable e) {
             error("Can not clicked on an Element: " + element + " due to " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public static void clickSupport(WebDriver driver, Properties loadedOR, String locatorKey) {
+        try {
+            info("Clicking on an Element : " + locatorKey + ".....");
+            autoRedirectElementType(driver, loadedOR, locatorKey).click();
+        } catch (Throwable e) {
+            error("Can not clicked on an Element: " + locatorKey + " due to " + e.getMessage());
             throw e;
         }
     }
@@ -71,6 +87,38 @@ public class ElementAction extends Log {
             return select;
         } catch (Throwable e) {
             error("Can not find dropdown due to: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    private static WebElement autoRedirectElementType(WebDriver driver, Properties loadedOR, String locatorKey) {
+        WebElement element = null;
+        try {
+            info("Trying to automatically detect what locator type this element: " + locatorKey + " is...");
+            if (locatorKey.endsWith(XPATH)) {
+
+                element = driver.findElement(By.xpath(loadedOR.getProperty(locatorKey)));
+
+            } else if (locatorKey.endsWith(CSS)) {
+
+                element = driver.findElement(By.cssSelector(loadedOR.getProperty(locatorKey)));
+
+            } else if (locatorKey.endsWith(ID)) {
+
+                element = driver.findElement(By.id(loadedOR.getProperty(locatorKey)));
+            }
+        } catch (Throwable e) {
+            error("Can not find element " + locatorKey + " after detect it due to: " + e.getMessage());
+            throw new Error("Can not find element " + locatorKey + " after detect it due to: " + e.getCause());
+        }
+        return element;
+    }
+
+    private static void sampleMethod() {
+        try {
+            info("");
+        } catch (Throwable e) {
+            error("");
             throw e;
         }
     }

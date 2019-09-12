@@ -1,6 +1,7 @@
 package lucy_bdd_framework.steps;
 
 import core.helpers.driverhelper.DriverName;
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -8,9 +9,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -29,9 +28,16 @@ public class Login {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
+    //Cucumber hook can listen to test scenario result and invoke the method with that result to be injected
     @After
-    public void afterEachScenario() {
-        driver.quit();
+    public void afterEachScenario(Scenario scenario) {
+        if (scenario.isFailed()) {
+            byte[] screenshotByte = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.embed(screenshotByte, "image/png");
+        }
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @Given("^user navigate to bank app \"([^\"]*)\"$")
