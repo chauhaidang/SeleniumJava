@@ -1,4 +1,4 @@
-package lucy_bdd_framework.pages;
+package lucy_bdd_framework.pages.actions;
 
 public class CustomerDetail {
 
