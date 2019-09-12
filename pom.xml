@@ -34,9 +34,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <log4j2.version>2.6.1</log4j2.version>
-        <selenium.version>2.53.1</selenium.version>
+        <selenium.version>3.9.1</selenium.version>
         <poi.version>3.6</poi.version>
-        <cucumber.version>1.2.4</cucumber.version>
+        <cucumber.version>1.2.5</cucumber.version>
     </properties>
 
     <dependencies>
@@ -180,9 +180,15 @@
         <dependency>
             <groupId>com.vimalselvam</groupId>
             <artifactId>cucumber-extentsreport</artifactId>
-            <version>1.1.0</version>
+            <version>2.0.5</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
 
     </dependencies>
 </project>
