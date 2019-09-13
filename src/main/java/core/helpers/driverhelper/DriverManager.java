@@ -5,6 +5,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+import static core.helpers.Log.error;
+import static core.helpers.Log.info;
 import static core.helpers.driverhelper.DriverName.CHROME;
 import static core.helpers.driverhelper.DriverName.FIREFOX;
 
@@ -31,6 +33,16 @@ public class DriverManager {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("window.alert = () => 0");
         Log.debug("Ignored upcoming alert!");
+    }
+
+    public static void openPage(WebDriver driver, String url) {
+        try {
+            info("Navigating to " + url);
+            driver.get(url);
+        } catch (Throwable e) {
+            error("Can not go to page " + url);
+            throw e;
+        }
     }
 }
 
