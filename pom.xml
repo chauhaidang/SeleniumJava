@@ -27,6 +27,12 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 
     <properties>
@@ -38,6 +44,8 @@
         <poi.version>3.6</poi.version>
         <cucumber.version>1.2.4</cucumber.version>
         <suitePath>src/test/java/lucy_bdd_framework/configs/testng.xml</suitePath>
+        <headless>false</headless>
+        <browserName>chrome</browserName>
     </properties>
 
     <dependencies>

@@ -1,13 +1,15 @@
 package lucy_bdd_framework.utils;
 
+import core.helpers.Const;
 import core.helpers.driverhelper.DriverManager;
-import core.helpers.driverhelper.DriverName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
+import static core.helpers.MavenPropertiesReader.getMavenPropertyValue;
 import static core.helpers.driverhelper.DriverManager.setupDriver;
 
 public class SeleniumDriver {
@@ -20,8 +22,13 @@ public class SeleniumDriver {
     //The reason why we set this constructor to private because we don't want the instance of this class to be initialized by constructor default always
     //But only when we call below setDriver method
     private SeleniumDriver() {
-        setupDriver(DriverName.CHROME);
-        driver = new ChromeDriver();
+        setupDriver(getMavenPropertyValue(Const.BROWSER_NAME));
+        if (getMavenPropertyValue(Const.IS_HEADLESS).equalsIgnoreCase("true")) {
+            driver = new ChromeDriver(new ChromeOptions().addArguments("--headless"));
+        } else {
+            driver = new ChromeDriver();
+        }
+
         driver.manage().window().maximize();
 
         waitDriver = new WebDriverWait(driver, TIMEOUT);

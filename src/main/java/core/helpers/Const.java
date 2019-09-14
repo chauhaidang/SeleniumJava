@@ -40,4 +40,8 @@ public class Const {
     public static final String mysqlpassword = "123456";
     public static final String mysqlurl = "jdbc:mysql://localhost:3306/dangchau";
 
+    //Env Properties
+    public static final String IS_HEADLESS = "headless";
+    public static final String BROWSER_NAME = "browserName";
+
 }
