@@ -14,5 +14,5 @@ Feature: Customer Detail
       | 1004           |
       | 1005           |
       | 1006           |
-    Then user should see account number info display as "1006"
+    Then user should see account number info display as "1004"
     

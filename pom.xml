@@ -22,7 +22,7 @@
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/java/lucy_bdd_framework/configs/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>${suitePath}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -37,6 +37,7 @@
         <selenium.version>3.9.1</selenium.version>
         <poi.version>3.6</poi.version>
         <cucumber.version>1.2.4</cucumber.version>
+        <suitePath>src/test/java/lucy_bdd_framework/configs/testng.xml</suitePath>
     </properties>
 
     <dependencies>
@@ -50,12 +51,12 @@
             <!--<scope>provided</scope>--> <!--like compile, but indicate that you expect the jdk or container to provide the dependency at runtime at the specific container (means not the whole project build need this)-->
         </dependency>
 
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.testng/testng &ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.testng</groupId>-->
-        <!--            <artifactId>testng</artifactId>-->
-        <!--            <version>6.11</version>-->
-        <!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.11</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
@@ -65,11 +66,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.relevantcodes/extentreports -->
-        <!--        <dependency>-->
-        <!--            <groupId>com.relevantcodes</groupId>-->
-        <!--            <artifactId>extentreports</artifactId>-->
-        <!--            <version>2.41.2</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.relevantcodes</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>2.41.2</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.uncommons/reportng -->
         <dependency>

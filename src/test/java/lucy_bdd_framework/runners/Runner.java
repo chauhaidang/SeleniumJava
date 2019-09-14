@@ -7,34 +7,30 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.BeforeClass;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @CucumberOptions(
         features = Const.TEST_PATH + "/lucy_bdd_framework/features/",
         glue = {"lucy_bdd_framework/steps"},
         monochrome = true,
         tags = {"@Regression, @Functional"},
-        plugin = {"pretty",
-                "html:target/cucumber",
-                "json:target/cucumber/cucumber.json",
-                "com.cucumber.listener.ExtentCucumberFormatter"}
+        plugin = {"json:target/cucumber/cucumber.json", "pretty", "html:target/cucumber", "com.cucumber.listener.ExtentCucumberFormatter"}
 )
 public class Runner extends AbstractTestNGCucumberTests {
 
     @BeforeClass
     public static void setUpReport() {
-        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy_hhmmss");
-        Date currentDate = new Date();
-        String strDate = sdf.format(currentDate);
-        String reportFilePath = System.getProperty("user.dir") + "/target/cucumber/extent_" + strDate + ".html";
-        File reportFile = new File(reportFilePath);
-        ExtentCucumberFormatter.initiateExtentCucumberFormatter(reportFile, false);
+        // Initiates the extent report and generates the output in the output/Run_<unique timestamp>/report.html file by default.
+//        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy_hhmmss");
+//        Date curDate = new Date();
+//        String strDate = sdf.format(curDate);
+        String fileName = System.getProperty("user.dir") + "/target/cucumber/extent.html";
+        File newFile = new File(fileName);
+        ExtentCucumberFormatter.initiateExtentCucumberFormatter(newFile, true);
 
         //Load report config
         ExtentCucumberFormatter.loadConfig(new File(Const.TEST_PATH + "/lucy_bdd_framework/configs/extent_report_config.xml"));
         ExtentCucumberFormatter.addSystemInfo("BrowserName", "Chrome");
         ExtentCucumberFormatter.addSystemInfo("Browser Version", "76");
-        ExtentCucumberFormatter.addSystemInfo("Selenium Version", System.getProperty("selenium.version"));
+        ExtentCucumberFormatter.addSystemInfo("Selenium Version", "Not provided yet");
     }
 }
