@@ -20,15 +20,14 @@ public class runner {
     @BeforeClass
     public static void setUpReport() {
 
-        /** Deprecated in cucumber 1.2.5
-         ExtentCucumberFormatter.initiateExtentCucumberFormatter();
-
-         //Load report config
-         ExtentCucumberFormatter.loadConfig(new File(Const.MAIN_PATH + "/CucumberTraining/configs/extent_report_config.xml"));
-         ExtentCucumberFormatter.addSystemInfo("BrowserName", "Chrome");
-         ExtentCucumberFormatter.addSystemInfo("Browser Version", "76");
-         ExtentCucumberFormatter.addSystemInfo("Selenium Version", "Not provided yet");
-         */
+//
+//         ExtentCucumberFormatter.initiateExtentCucumberFormatter();
+//
+//         //Load report config
+//         ExtentCucumberFormatter.loadConfig(new File(Const.MAIN_PATH + "/CucumberTraining/configs/extent_report_config.xml"));
+//         ExtentCucumberFormatter.addSystemInfo("BrowserName", "Chrome");
+//         ExtentCucumberFormatter.addSystemInfo("Browser Version", "76");
+//         ExtentCucumberFormatter.addSystemInfo("Selenium Version", "Not provided yet");
     }
 
 }

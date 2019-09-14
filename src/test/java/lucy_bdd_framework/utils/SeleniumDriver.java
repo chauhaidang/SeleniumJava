@@ -37,7 +37,7 @@ public class SeleniumDriver {
         return driver;
     }
 
-    public static void setDriver(WebDriver driver) {
+    public static void setDriver() {
         if (seleniumDriver == null) {
             seleniumDriver = new SeleniumDriver(); //This call the private constructor
         }
