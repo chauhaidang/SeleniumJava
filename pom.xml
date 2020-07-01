@@ -39,7 +39,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <log4j2.version>2.6.1</log4j2.version>
+        <log4j2.version>2.13.3</log4j2.version>
         <selenium.version>3.9.1</selenium.version>
         <poi.version>3.6</poi.version>
         <cucumber.version>1.2.4</cucumber.version>
