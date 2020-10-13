@@ -52,7 +52,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.13.1</version>
             <!--            <scope>test</scope> &lt;!&ndash; this is to limit the junit library to apply only to src/test &ndash;&gt;-->
             <!--<scope>compile</scope>--> <!--default scope of maven, apply on all file -->
             <!--<scope>runtime</scope>--> <!--Only available at the runtime, that means this library will not be required for compilation but for runtime and test classpath-->
